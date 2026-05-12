@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('presidents', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->year("year");
+            $table->integer("year");
             $table->timestamps();
         });
     }

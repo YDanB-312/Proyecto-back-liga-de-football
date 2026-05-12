@@ -10,7 +10,7 @@ use App\Models\President;
 
 class ConsultasController extends Controller
 {
-    public function consultas()
+    public function consulta()
     {
         //todos los equipos con sus respectivos presidentes.
         $consulta1 = Team::with('president')->get();
@@ -25,7 +25,7 @@ class ConsultasController extends Controller
         $consulta4 = Game::with(['teams', 'goals.player'])->get();
 
         //todos los presidentes con sus equipos, los jugadores de cada equipo, los goles y el partido en el cual se hiso ese gol.
-        $consulta5 = President::with('teams.players.goals.game')->get();
+        $consulta5 = President::with('team.players.goals.game')->get();
 
         return response()->json([
             'consulta1' => $consulta1,

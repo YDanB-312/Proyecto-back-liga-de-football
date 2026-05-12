@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("city");
             $table->string("stadium");
             $table->unsignedInteger("capacity");
-            $table->year("year_of_fundation");
+            $table->integer("year_of_fundation");
 
             $table->foreignId("president_id")->constrained("presidents")->onDelete("cascade");
             $table->timestamps();

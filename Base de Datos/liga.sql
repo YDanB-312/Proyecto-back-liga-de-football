@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-03-2026 a las 23:19:29
+-- Tiempo de generación: 11-05-2026 a las 12:00:00
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -45,7 +45,12 @@ INSERT INTO `games` (`id`, `date`, `local_goals`, `away_goals`, `created_at`, `u
 (2, '2022-07-22', 1, 1, NULL, NULL),
 (3, '2023-11-05', 3, 2, NULL, NULL),
 (4, '2024-04-18', 0, 2, NULL, NULL),
-(5, '2025-09-30', 2, 2, NULL, NULL);
+(5, '2025-09-30', 2, 2, NULL, NULL),
+(6, '2026-01-10', 1, 0, NULL, NULL),
+(7, '2026-02-14', 2, 3, NULL, NULL),
+(8, '2026-03-20', 0, 0, NULL, NULL),
+(9, '2026-04-25', 3, 1, NULL, NULL),
+(10, '2026-05-01', 1, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,7 +82,17 @@ INSERT INTO `goals` (`id`, `name`, `description`, `created_at`, `updated_at`, `p
 (7, 'Gol 7', 'Penal', NULL, NULL, 24, 4),
 (8, 'Gol 8', 'Gol de volea', NULL, NULL, 45, 4),
 (9, 'Gol 9', 'Tiro libre', NULL, NULL, 35, 5),
-(10, 'Gol 10', 'Jugada colectiva', NULL, NULL, 46, 5);
+(10, 'Gol 10', 'Jugada colectiva', NULL, NULL, 46, 5),
+(11, 'Gol 11', 'Tiro de esquina', NULL, NULL, 58, 6),
+(12, 'Gol 12', 'Cabezazo', NULL, NULL, 64, 6),
+(13, 'Gol 13', 'Jugada individual', NULL, NULL, 69, 7),
+(14, 'Gol 14', 'Penalti', NULL, NULL, 65, 7),
+(15, 'Gol 15', 'Remate de media distancia', NULL, NULL, 74, 8),
+(16, 'Gol 16', 'Autogol', NULL, NULL, 72, 8),
+(17, 'Gol 17', 'Gol olímpico', NULL, NULL, 79, 9),
+(18, 'Gol 18', 'Volea', NULL, NULL, 78, 9),
+(19, 'Gol 19', 'Penalti', NULL, NULL, 77, 10),
+(20, 'Gol 20', 'Tiro libre', NULL, NULL, 80, 10);
 
 -- --------------------------------------------------------
 
@@ -197,7 +212,32 @@ INSERT INTO `players` (`id`, `name`, `position`, `created_at`, `updated_at`, `te
 (52, 'Sergio Peña', 'Medio', NULL, NULL, 5),
 (53, 'Gianluca Lapadula', 'Delantero', NULL, NULL, 5),
 (54, 'Paolo Guerrero', 'Delantero', NULL, NULL, 5),
-(55, 'André Carrillo', 'Delantero', NULL, NULL, 5);
+(55, 'André Carrillo', 'Delantero', NULL, NULL, 5),
+(56, 'Alex Castro', 'Portero', NULL, NULL, 6),
+(57, 'Jair Mosquera', 'Defensa', NULL, NULL, 6),
+(58, 'Kevin Martínez', 'Medio', NULL, NULL, 6),
+(59, 'Juanfer Ospina', 'Delantero', NULL, NULL, 6),
+(60, 'Yimmi Chará', 'Delantero', NULL, NULL, 6),
+(61, 'Aldair Quintana', 'Portero', NULL, NULL, 7),
+(62, 'Andrés Llinás', 'Defensa', NULL, NULL, 7),
+(63, 'Daniel Giraldo', 'Medio', NULL, NULL, 7),
+(64, 'Marco Pérez', 'Delantero', NULL, NULL, 7),
+(65, 'Diego Valoyes', 'Delantero', NULL, NULL, 7),
+(66, 'José Cuadrado', 'Portero', NULL, NULL, 8),
+(67, 'Jeison Angulo', 'Defensa', NULL, NULL, 8),
+(68, 'Baldomero Perlaza', 'Medio', NULL, NULL, 8),
+(69, 'Roger Murillo', 'Delantero', NULL, NULL, 8),
+(70, 'Andrés Colorado', 'Medio', NULL, NULL, 8),
+(71, 'Carlos Bejarano', 'Portero', NULL, NULL, 9),
+(72, 'Brayan Ceballos', 'Defensa', NULL, NULL, 9),
+(73, 'Fabián Sambueza', 'Medio', NULL, NULL, 9),
+(74, 'Jefferson Duque', 'Delantero', NULL, NULL, 9),
+(75, 'Jarlan Barrera', 'Medio', NULL, NULL, 9),
+(76, 'Éder Chaux', 'Portero', NULL, NULL, 10),
+(77, 'Juan Pablo Vargas', 'Defensa', NULL, NULL, 10),
+(78, 'Matías Mier', 'Medio', NULL, NULL, 10),
+(79, 'Michael Rangel', 'Delantero', NULL, NULL, 10),
+(80, 'Fernando Uribe', 'Delantero', NULL, NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -208,7 +248,7 @@ INSERT INTO `players` (`id`, `name`, `position`, `created_at`, `updated_at`, `te
 CREATE TABLE `presidents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -218,11 +258,16 @@ CREATE TABLE `presidents` (
 --
 
 INSERT INTO `presidents` (`id`, `name`, `year`, `created_at`, `updated_at`) VALUES
-(1, 'Carlos Pérez', '1998', NULL, NULL),
-(2, 'Ana Gómez', '2003', NULL, NULL),
-(3, 'Luis Martínez', '2007', NULL, NULL),
-(4, 'Marta Rodríguez', '2011', NULL, NULL),
-(5, 'Jorge Sánchez', '2016', NULL, NULL);
+(1, 'Carlos Pérez', 1998, NULL, NULL),
+(2, 'Ana Gómez', 2003, NULL, NULL),
+(3, 'Luis Martínez', 2007, NULL, NULL),
+(4, 'Marta Rodríguez', 2011, NULL, NULL),
+(5, 'Jorge Sánchez', 2016, NULL, NULL),
+(6, 'Roberto Fernández', 2000, NULL, NULL),
+(7, 'Patricia López', 2005, NULL, NULL),
+(8, 'Fernando Díaz', 2010, NULL, NULL),
+(9, 'Gabriela Torres', 2015, NULL, NULL),
+(10, 'Ricardo Vargas', 2020, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -236,7 +281,7 @@ CREATE TABLE `teams` (
   `city` varchar(255) NOT NULL,
   `stadium` varchar(255) NOT NULL,
   `capacity` int(10) UNSIGNED NOT NULL,
-  `year_of_fundation` year(4) NOT NULL,
+  `year_of_fundation` int(11) NOT NULL,
   `president_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -247,11 +292,16 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `name`, `city`, `stadium`, `capacity`, `year_of_fundation`, `president_id`, `created_at`, `updated_at`) VALUES
-(1, 'Tigres', 'Bogotá', 'Tigres Arena', 30000, '1985', 1, NULL, NULL),
-(2, 'Águilas', 'Medellín', 'Águilas Park', 25000, '1992', 2, NULL, NULL),
-(3, 'Leones', 'Cali', 'Leones Field', 28000, '1978', 3, NULL, NULL),
-(4, 'Halcones', 'Barranquilla', 'Halcones Dome', 22000, '2001', 4, NULL, NULL),
-(5, 'Jaguares', 'Bucaramanga', 'Jaguares Stadium', 24000, '1996', 5, NULL, NULL);
+(1, 'Tigres', 'Bogotá', 'Tigres Arena', 30000, 1985, 1, NULL, NULL),
+(2, 'Águilas', 'Medellín', 'Águilas Park', 25000, 1992, 2, NULL, NULL),
+(3, 'Leones', 'Cali', 'Leones Field', 28000, 1978, 3, NULL, NULL),
+(4, 'Halcones', 'Barranquilla', 'Halcones Dome', 22000, 2001, 4, NULL, NULL),
+(5, 'Jaguares', 'Bucaramanga', 'Jaguares Stadium', 24000, 1996, 5, NULL, NULL),
+(6, 'Dragones', 'Cartagena', 'Dragones Coliseum', 15000, 2005, 6, NULL, NULL),
+(7, 'Panteras', 'Pereira', 'Panteras Arena', 20000, 1999, 7, NULL, NULL),
+(8, 'Lobos', 'Manizales', 'Lobos Stadium', 35000, 1988, 8, NULL, NULL),
+(9, 'Cóndores', 'Cúcuta', 'Cóndores Park', 18000, 2008, 9, NULL, NULL),
+(10, 'Toros', 'Ibagué', 'Toros Field', 12000, 1993, 10, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -281,7 +331,17 @@ INSERT INTO `team_games` (`id`, `created_at`, `updated_at`, `team_id`, `game_id`
 (7, NULL, NULL, 3, 4),
 (8, NULL, NULL, 5, 4),
 (9, NULL, NULL, 4, 5),
-(10, NULL, NULL, 5, 5);
+(10, NULL, NULL, 5, 5),
+(11, NULL, NULL, 6, 6),
+(12, NULL, NULL, 7, 6),
+(13, NULL, NULL, 7, 7),
+(14, NULL, NULL, 8, 7),
+(15, NULL, NULL, 8, 8),
+(16, NULL, NULL, 9, 8),
+(17, NULL, NULL, 9, 9),
+(18, NULL, NULL, 10, 9),
+(19, NULL, NULL, 10, 10),
+(20, NULL, NULL, 1, 10);
 
 --
 -- Índices para tablas volcadas
@@ -351,13 +411,13 @@ ALTER TABLE `team_games`
 -- AUTO_INCREMENT de la tabla `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `goals`
 --
 ALTER TABLE `goals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -375,19 +435,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `presidents`
 --
 ALTER TABLE `presidents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `team_games`
